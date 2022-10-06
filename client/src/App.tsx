@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
 
-function App() {
+const App: React.FC = () => {
+  interface Data {
+    id: string;
+    username: string;
+    password: string;
+    email: string;
+  }
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const datas = await fetch('/notes/new');
+      const json = await datas.json();
+      console.log(json);
+      setData(json);
+    };
+    getData();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>test</div>
+    </>
   );
-}
+};
 
 export default App;

@@ -1,9 +1,17 @@
 import express, { Request, Response } from 'express';
 
-const findAllNotes = (req: Request, res: Response) => {};
+const createNote = async (req: Request, res: Response) => {
+  const { title, description } = req.body;
 
-const findNote = (req: Request, res: Response) => {};
+  res.status(200).send(title);
+};
 
-const createNote = (req: Request, res: Response) => {};
+const findAllNotes = async (req: Request, res: Response) => {
+  res.status(200).json({ message: 'halo' });
+};
+
+const findNote = (req: Request, res: Response) => {
+  res.status(200).json({ message: `${req.params.id}` });
+};
 
 export { findAllNotes, createNote, findNote };
